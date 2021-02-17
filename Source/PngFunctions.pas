@@ -3,7 +3,8 @@ unit PngFunctions;
 interface
 
 uses
-  Windows, Graphics, ImgList, Contnrs, pngimage;
+  Windows, Vcl.Graphics, Vcl.ImgList, Contnrs, Vcl.Imaging.pngimage;
+
 
 {$IF RTLVersion < 20.0 }
   {$IF RTLVersion < 15.0 }
@@ -48,7 +49,7 @@ procedure MakeImageBlended(Image: TPngImage; Amount: Byte = 127);
     Assigner: TBitmap;
     Temp: TPngImage;
     X, Y: Integer;
-    Line: pngimage.PByteArray;
+    Line: Vcl.Imaging.pngimage.PByteArray;
     Current: TColor;
   begin
     //Not all formats of PNG support an alpha-channel (paletted images for example),
@@ -84,7 +85,7 @@ procedure MakeImageBlended(Image: TPngImage; Amount: Byte = 127);
 
 var
   X, Y: Integer;
-  Line: pngimage.PByteArray;
+  Line: Vcl.Imaging.pngimage.PByteArray;
   Forced: Boolean;
   TransparentColor: TColor;
   BitTransparency: Boolean;
@@ -189,7 +190,7 @@ type
   TRGBALine = array[Word] of TRGBQuad;
   PRGBALine = ^TRGBALine;
 var
-  MaskLines: array of pngimage.PByteArray;
+  MaskLines: array of Vcl.Imaging.pngimage.PByteArray;
 
   function ColorToTriple(const Color: TColor): TRGBTriple;
   begin
@@ -277,7 +278,7 @@ var
   Temp, SourceColor, SourceMask: TBitmap;
   X, Y: Integer;
   Line: PRGBLine;
-  MaskLine, AlphaLine: pngimage.PByteArray;
+  MaskLine, AlphaLine: Vcl.Imaging.pngimage.PByteArray;
   TransparentColor, CurrentColor: TColor;
   IconInfo: TIconInfo;
   AlphaNeeded: Boolean;
@@ -381,7 +382,7 @@ end;
 procedure CreatePNG(Color, Mask: TBitmap; Dest: TPngImage; InverseMask: Boolean = False);
 var
   Temp: TBitmap;
-  Line: pngimage.PByteArray;
+  Line: Vcl.Imaging.pngimage.PByteArray;
   X, Y: Integer;
 begin
   Assert(Dest <> nil, 'Dest is nil!');
@@ -417,7 +418,7 @@ end;
 procedure CreatePNGMasked(Bitmap: TBitmap; Mask: TColor; Dest: TPngImage);
 var
   Temp: TBitmap;
-  Line: pngimage.PByteArray;
+  Line: Vcl.Imaging.pngimage.PByteArray;
   X, Y: Integer;
 begin
   Assert(Dest <> nil, 'Dest is nil!');
@@ -452,7 +453,7 @@ var
   Width, Height: Integer;
   Bitmap: TBitmap;
   BitmapLine: PRGBLine;
-  AlphaLineA, AlphaLineB: pngimage.PByteArray;
+  AlphaLineA, AlphaLineB: Vcl.Imaging.pngimage.PByteArray;
   PNG: TPngImage;
 begin
   //This function slices a large PNG file (e.g. an image with all images for a

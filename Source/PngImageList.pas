@@ -7,11 +7,11 @@ This unit only compiles with Delphi 7 and higher!
 interface
 
 uses
-  Windows, Classes, SysUtils, Controls, Graphics, ImgList,
+  Windows, Classes, SysUtils, Vcl.Controls, Vcl.Graphics, Vcl.ImgList,
   {$IF CompilerVersion >= 34.0 Delphi 10.4 }
   System.UITypes,
   {$ENDIF}
-  PngImage, PngFunctions;
+  Vcl.Imaging.PngImage, PngFunctions;
 
 type
   INameMapping = interface
@@ -160,7 +160,7 @@ procedure CopyImageFromImageList(Dest: TPngImage; ImageList: TCustomImageList; I
 implementation
 
 uses
-  Math, Contnrs, CommCtrl, ComCtrls;
+  Math, Contnrs, CommCtrl, Vcl.ComCtrls;
 
 var
   ImageListCount: Integer = 0;
@@ -310,7 +310,7 @@ var
   IconInfo: TIconInfo;
   ColorBitmap, MaskBitmap: TBitmap;
   X, Y: Integer;
-  AlphaLine: pngimage.PByteArray;
+  AlphaLine: PByteArray;
   Png: TPngImageCollectionItem;
 begin
   if ImageList is TPngImageList then begin
