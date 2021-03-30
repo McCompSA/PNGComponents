@@ -310,7 +310,7 @@ var
   IconInfo: TIconInfo;
   ColorBitmap, MaskBitmap: TBitmap;
   X, Y: Integer;
-  AlphaLine: PByteArray;
+  AlphaLine: Vcl.Imaging.pngimage.PByteArray;
   Png: TPngImageCollectionItem;
 begin
   if ImageList is TPngImageList then begin

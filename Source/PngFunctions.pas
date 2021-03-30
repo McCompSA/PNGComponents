@@ -5,7 +5,6 @@ interface
 uses
   Windows, Vcl.Graphics, Vcl.ImgList, Contnrs, Vcl.Imaging.pngimage;
 
-
 {$IF RTLVersion < 20.0 }
   {$IF RTLVersion < 15.0 }
     PngComponents are only compatible with Delphi 7 and higher!
